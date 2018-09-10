@@ -1,0 +1,19 @@
+server:
+  port: 9006
+eureka:
+  instance:
+    hostname: localhost
+  client: 
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:9001/eureka/
+spring:
+  application:
+    name: springcloud-zuul
+zuul:
+  routes:
+    api-a:
+      path: /api-a/**
+      serviceId: springcloud-ribbon
+    api-b:
+      path: /api-b/**
+      serviceId: springcloud-feign
